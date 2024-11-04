@@ -5,7 +5,6 @@ const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI);
 
-        // await mongoose.connect("mongodb+srv://neoGStudent:neoGStudent@neog.nxppkiu.mongodb.net/")
         console.log("MongoDB connected successfully.");
     } catch (error) {
         console.error("MongoDB connection error:", error.message);
@@ -15,5 +14,3 @@ const connectDB = async () => {
 
 module.exports = connectDB;
 
-
-//mongodb+srv://neoGStudent:neoGStudent@neog.nxppkiu.mongodb.net/randomusers?retryWrites=true&w=majority&appName=neoG
