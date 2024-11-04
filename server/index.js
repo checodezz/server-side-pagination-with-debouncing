@@ -1,8 +1,8 @@
-const express = require ("express")
+const express = require("express")
 const connectDB = require("./db/db.connect")
 const userRoutes = require("./routes/user")
-
-const app= express()
+require('dotenv').config();
+const app = express()
 const PORT = 3000;
 
 connectDB()
