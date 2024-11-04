@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 const UserList = () => {
-  // State for user data, pagination, search, and loading
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
-  const [pageSize] = useState(10); // Fixed at 10 items per page
+  const [pageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +18,7 @@ const UserList = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://server-side-pagination-with-debouncing.vercel.app/users`,
+        `https://server-side-pagination-with-debouncing-al8d.vercel.app/users`,
         {
           params: {
             page,

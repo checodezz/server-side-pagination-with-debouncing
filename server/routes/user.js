@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         { email: { $regex: search, $options: 'i' } }
       ]
     })
-      .skip(skip)
+      .skip(skip)  //sikp the first 10 || 20 docs based on user req
       .limit(pageSize);
 
     const totalCount = await User.countDocuments({
