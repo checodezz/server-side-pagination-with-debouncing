@@ -5,16 +5,28 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const pageSize = parseInt(req.query.pageSize) || 10;
+  const searchQuery = req.query.search || ""; // Get the search query
 
   try {
-    // to calculate the number of documents to skip
+    // Calculate the number of documents to skip
     const skip = (page - 1) * pageSize;
 
-    const users = await User.find()
+    // Modify the query to include search functionality
+    const users = await User.find({
+      $or: [
+        { username: { $regex: searchQuery, $options: "i" } },
+        { email: { $regex: searchQuery, $options: "i" } }
+      ]
+    })
       .skip(skip)
       .limit(pageSize);
 
-    const totalCount = await User.countDocuments();
+    const totalCount = await User.countDocuments({
+      $or: [
+        { username: { $regex: searchQuery, $options: "i" } },
+        { email: { $regex: searchQuery, $options: "i" } }
+      ]
+    });
 
     res.json({
       users,

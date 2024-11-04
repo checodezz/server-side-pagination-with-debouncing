@@ -28,6 +28,7 @@ const UserList = () => {
           },
         }
       );
+      console.log(response.data);
       setUsers(response.data.users);
       setTotalPages(response.data.totalPages);
     } catch (error) {
